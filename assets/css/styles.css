@@ -88,12 +88,12 @@ html {
 /* Rest of the CSS remains the same */
 
 body.scale-cv {
-  --h1-font-size: 0.938rem;
-  --h2-font-size: 0.938rem;
-  --h3-font-size: 0.875rem;
-  --normal-font-size: 0.813rem;
-  --small-font-size: 0.75rem;
-  --smaller-font-size: 0.688rem;
+  --h1-font-size: 0.8rem;
+  --h2-font-size: 0.8rem;
+  --h3-font-size: 0.7rem;
+  --normal-font-size: 0.6rem;
+  --small-font-size: 0.55rem;
+  --smaller-font-size: 0.55rem;
 }
 /* Generate PDF button */
 .generate-pdf {
