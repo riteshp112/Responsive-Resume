@@ -1,342 +1,387 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Portfolio website of Ritesh Patel." />
-    <meta
-      name="keywords"
-      content="Ritesh Patel, United Institute of Technology, Software Developer, Engineer, Renukoot, Portfolio"
-    />
-    <meta name="robots" content="index, follow" />
-    <meta
-      name="google-site-verification"
-      content="iwuWeaRlqphorkaaefoOGMa5y9uV6KYfzIlJRqdi-gw"
-    />
-    <meta property="og:title" content="Ritesh Patel" />
-    <meta
-      property="og:description"
-      content="Portfolio website of Ritesh Patel."
-    />
-    <meta property="og:image" content="assets/img/PicsArt_08-19-12.42.11.jpg" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ritesh Patel | Full-stack Developer</title>
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-color: #00d4bd; /* Teal accent */
+            --secondary-color: #1f2937; /* Dark Grey */
+            --bg-color: #0f172a; /* Deep Blue/Black */
+            --text-color: #e2e8f0; /* Off-white */
+            --text-muted: #94a3b8;
+            --card-bg: #1e293b;
+        }
 
-    <!-- BOX ICONS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
-    />
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css" />
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
 
-    <!-- Favicon -->
-    <link
-      rel="icon"
-      href="assets/img/PicsArt_08-19-12.42.11.jpg"
-      type="image/jpg"
-    />
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
 
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": "SEO Best Practices"
-      }
-    </script>
+        /* --- HEADER & NAV --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid #334155;
+        }
 
-    <title>Ritesh Patel - Portfolio</title>
-  </head>
-  <body>
-    <!-- HEADER -->
-    <header class="l-header" id="header">
-      <nav class="nav">
-        <a href="#" class="nav_logo">Ritesh Patel</a>
-        <div class="nav_list">
-          <div class="nav_item">
-            <a href="#home" class="nav_link active-link"
-              ><i class="bx bx-home nav_icon"></i>Home</a
-            >
-          </div>
-          <div class="nav_item">
-            <a href="#profile" class="nav_link"
-              ><i class="bx bx-user nav_icon"></i>Professional Summary</a
-            >
-          </div>
-          <div class="nav_item">
-            <a href="#education" class="nav_link"
-              ><i class="bx bx-book nav_icon"></i>Education</a
-            >
-          </div>
-          <div class="nav_item">
-            <a href="#skills" class="nav_link"
-              ><i class="bx bx-receipt nav_icon"></i>Skills</a
-            >
-          </div>
-          <div class="nav_item">
-            <a href="#experience" class="nav_link"
-              ><i class="bx bx-briefcase-alt nav_icon"></i>Work Experience</a
-            >
-          </div>
-          <div class="nav_item">
-            <a href="#projects" class="nav_link"
-              ><i class="bx bx-folder-open nav_icon"></i>Projects</a
-            >
-          </div>
-        </div>
-      </nav>
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a:hover { color: var(--primary-color); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 10%;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .hero span { color: var(--primary-color); }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--primary-color);
+            color: var(--bg-color);
+        }
+
+        /* --- SECTIONS COMMON --- */
+        section {
+            padding: 5rem 10%;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .section-title span { border-bottom: 3px solid var(--primary-color); }
+
+        /* --- SKILLS --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .tag {
+            background: var(--card-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid #334155;
+        }
+
+        /* --- EXPERIENCE --- */
+        .timeline {
+            border-left: 2px solid var(--primary-color);
+            margin-left: 1rem;
+            padding-left: 2rem;
+        }
+
+        .job-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .job-card::before {
+            content: '';
+            position: absolute;
+            left: -2.6rem;
+            top: 2rem;
+            width: 1rem;
+            height: 1rem;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        .job-title { font-size: 1.5rem; font-weight: bold; }
+        .company { color: var(--primary-color); margin-bottom: 0.5rem; display: block; }
+        .date { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; display: block;}
+        
+        .job-details li {
+            margin-bottom: 0.5rem;
+            list-style-type: disc;
+            margin-left: 1.5rem;
+        }
+
+        /* --- PROJECTS --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover { transform: translateY(-5px); }
+        .project-title { font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--primary-color); }
+        .tech-stack { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; font-style: italic;}
+
+        /* --- CONTACT --- */
+        .contact { text-align: center; }
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .contact-item {
+            font-size: 1.2rem;
+            border: 1px solid var(--text-muted);
+            padding: 1rem 2rem;
+            border-radius: 5px;
+        }
+        .contact-item:hover { border-color: var(--primary-color); color: var(--primary-color); }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #0b1120;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav { display: none; } /* Simplified for single file demo */
+            .section-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">RP.</div>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <main class="l-main">
-      <div class="resume" id="area-cv">
-        <!-- HOME SECTION -->
-        <section class="home" id="home">
-          <div class="home_container section bd-grid">
-            <div class="home_data bd-grid">
-              <img
-                src="assets/img/PicsArt_08-19-12.42.11.jpg"
-                alt="Ritesh Patel"
-                class="home_img center"
-              />
-              <h1 class="home_title">Ritesh <b>Patel</b></h1>
-              <h3 class="home_profession">Full-Stack Developer</h3>
-              <a
-                download
-                href="assets/pdf/Ritesh-Patel-Resume.pdf"
-                class="home_button-movil"
-                >Download Resume</a
-              >
-            </div>
-            <div class="home_address bd-grid">
-              <span class="home_information"
-                ><i class="bx bx-map"></i> Renukoot, Uttar Pradesh, India</span
-              >
-              <span class="home_information"
-                ><i class="bx bx-envelope"></i> riteshp112@gmail.com</span
-              >
-              <span class="home_information"
-                ><i class="bx bx-phone"></i> +91 9140287372</span
-              >
-              <span class="home_information"
-                ><i class="bx bxl-linkedin"></i>
-                <a href="https://linkedin.com/in/riteshp112" target="_blank"
-                  >linkedin.com/in/riteshp112</a
-                ></span
-              >
-            </div>
-          </div>
-          <!-- <i
-            class="bx bx-moon change-theme"
-            title="Change Theme"
-            id="theme-button"
-          ></i>
-          <i
-            class="bx bx-download generate-pdf"
-            title="Download as PDF"
-            id="resume-button"
-          ></i> -->
-        </section>
+    <section class="hero" id="home">
+        <h3>Hi, my name is</h3>
+        <h1>Ritesh Patel.</h1>
+        <h2>I build <span id="typing-text"></span></h2>
+        <p style="max-width: 600px; margin-bottom: 2rem; color: var(--text-muted);">
+            Highly motivated Full-stack Developer with over 4 years of experience delivering scalable, high-performance web applications across FinTech, ERP, CRM, and Digital Payments.
+        </p>
+        <a href="#contact" class="btn">Get In Touch</a>
+    </section>
 
-        <!-- PROFESSIONAL SUMMARY SECTION -->
-        <section class="profile section" id="profile">
-          <h2 class="section-title">Professional Summary</h2>
-          <p class="profile_description">
-            Highly motivated and results-oriented Full-Stack Developer with 2.5+
-            years of experience building and maintaining web applications.
-            Proven ability to deliver high-quality, efficient, and user-friendly
-            solutions across both front-end and back-end development. Skilled in
-            leveraging React.js, Node.js, and Agile methodologies to contribute
-            to successful project completion.
-          </p>
-        </section>
-
-        <!-- EDUCATION SECTION -->
-        <section class="education section" id="education">
-          <h2 class="section-title">Education</h2>
-          <div class="education_container bd-grid">
-            <div class="education_content">
-              <div class="education_time">
-                <span class="education_rounder"></span>
-                <span class="education_line"></span>
-              </div>
-              <div class="education_data bd-grid">
-                <h3 class="education_title">Bachelor of Technology (CSE)</h3>
-                <span class="education_studies"
-                  >United Institute of Technology, Prayagraj</span
-                >
-                <span class="education_year">Aug 2018 – July 2022</span>
-              </div>
-            </div>
-            <div class="education_content">
-              <div class="education_time">
-                <span class="education_rounder"></span>
-                <span class="education_line"></span>
-              </div>
-              <div class="education_data bd-grid">
-                <h3 class="education_title">Intermediate</h3>
-                <span class="education_studies"
-                  >Bhavan's KDK Vidya Mandir, Renukoot</span
-                >
-                <span class="education_year">Apr 2016 – Mar 2018</span>
-              </div>
-            </div>
-            <div class="education_content">
-              <div class="education_time">
-                <span class="education_rounder"></span>
-                <span class="education_line"></span>
-              </div>
-              <div class="education_data bd-grid">
-                <h3 class="education_title">High School</h3>
-                <span class="education_studies"
-                  >Oxford Public School, Gorakhpur</span
-                >
-                <span class="education_year">Apr 2014 – Mar 2018</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- SKILLS SECTION -->
-        <section class="skills section" id="skills">
-          <h2 class="section-title">Technical Skills</h2>
-          <div class="skills_content bd-grid">
-            <div class="skills_name">
-              <span class="skills_circle"></span> React.js
-            </div>
-            <div class="skills_name">
-              <span class="skills_circle"></span> React-Native
-            </div>
-            <div class="skills_name">
-              <span class="skills_circle"></span> NPM/Yarn
-            </div>
-            <div class="skills_name">
-              <span class="skills_circle"></span> Redux
-            </div>
-            <div class="skills_name">
-              <span class="skills_circle"></span> MongoDB
-            </div>
-            <div class="skills_name">
-              <span class="skills_circle"></span> Git
-            </div>
-            <div class="skills_name">
-              <span class="skills_circle"></span> Node.js
-            </div>
-            <div class="skills_name">
-              <span class="skills_circle"></span> HTML/CSS/SCSS
-            </div>
-            <div class="skills_name">
-              <span class="skills_circle"></span> Postman
-            </div>
-            <div class="skills_name">
-              <span class="skills_circle"></span> Figma
-            </div>
-            <div class="skills_name">
-              <span class="skills_circle"></span> JavaScript
-            </div>
-            <div class="skills_name">
-              <span class="skills_circle"></span> TypeScript
-            </div>
-          </div>
-        </section>
-
-        <!-- WORK EXPERIENCE SECTION -->
-        <section class="experience section" id="experience">
-          <h2 class="section-title">Work Experience</h2>
-          <div class="experience_container bd-grid">
-            <div class="experience_content">
-              <div class="experience_time">
-                <span class="experience_rounder"></span>
-                <span class="experience_line"></span>
-              </div>
-              <div class="experience_data bd-grid">
-                <h3 class="experience_title">
-                  Associate: Software Engineering
-                </h3>
-                <span class="experience_company">Daffodil Software</span>
-                <span class="experience_year">Apr 2022 – Present</span>
-                <div class="experience_description">
-                  <div>
-                    Developed and maintained web applications using React.js and
-                    Node.js.
-                  </div>
-                  <div>
-                    Collaborated with cross-functional teams to design and
-                    implement new features.
-                  </div>
-                  <div>
-                    Participated in code reviews and ensured adherence to best
-                    practices.
-                  </div>
+    <section id="skills">
+        <h2 class="section-title"><span>Technical Skills</span></h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Front-End</h3>
+                <div class="tags">
+                    <span class="tag">React.js</span>
+                    <span class="tag">Next.js</span>
+                    <span class="tag">TypeScript</span>
+                    <span class="tag">JavaScript (ES6+)</span>
+                    <span class="tag">Redux / RTK</span>
+                    <span class="tag">Material UI</span>
+                    <span class="tag">HTML5 / CSS3</span>
+                    <span class="tag">Jest / RTL</span>
                 </div>
-              </div>
             </div>
-          </div>
-        </section>
+            <div class="skill-category">
+                <h3>Back-End</h3>
+                <div class="tags">
+                    <span class="tag">Node.js</span>
+                    <span class="tag">Express.js</span>
+                    <span class="tag">Microservices</span>
+                    <span class="tag">MongoDB</span>
+                    <span class="tag">PostgreSQL</span>
+                    <span class="tag">GraphQL</span>
+                    <span class="tag">REST APIs</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Tools & DevOps</h3>
+                <div class="tags">
+                    <span class="tag">AWS (EC2, S3)</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">Git / GitHub Actions</span>
+                    <span class="tag">Jenkins</span>
+                    <span class="tag">GCP</span>
+                    <span class="tag">Jira</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!-- PROJECTS SECTION -->
-        <section class="projects section" id="projects">
-          <h2 class="section-title">Projects</h2>
-          <div class="projects_container bd-grid">
-            <div class="project_content">
-              <h3 class="project_title">EliteCare</h3>
-              <span class="project_description"
-                >EliteCare is a web application designed for healthcare
-                professionals to manage patient records and appointments.</span
-              >
-              <span class="project_year">Jan 2024</span>
+    <section id="experience">
+        <h2 class="section-title"><span>Work Experience</span></h2>
+        <div class="timeline">
+            <div class="job-card">
+                <div class="job-title">Software Engineer</div>
+                <span class="company">Pine Labs | Noida</span>
+                <span class="date">May 2025 – Present</span>
+                <ul class="job-details">
+                    <li>Deliver critical features such as BNPL, Apple Pay, and D2C Checkout flows focusing on scalability.</li>
+                    <li>Spearhead high-impact POCs and resolve priority production issues during critical release cycles.</li>
+                    <li>Mentor new developers ensuring effective knowledge transfer and best practices.</li>
+                    <li>Collaborate with cross-functional Pods to deliver merchant-centric solutions.</li>
+                </ul>
             </div>
-            <div class="project_content">
-              <h3 class="project_title">LOCOMO</h3>
-              <span class="project_description"
-                >Developed Locomo, a centralized platform that simplifies project management by integrating user stories, tasks, APIs, and test cases. Implemented features like release unit tracking, team progress monitoring, and iterative development, streamlining workflows for Product Managers..</span
-              >
-              <span class="project_year">Nov 2022</span>
+            <div class="job-card">
+                <div class="job-title">Associate Software Engineer</div>
+                <span class="company">Daffodil Software Pvt Ltd | Hisar</span>
+                <span class="date">Dec 2021 – May 2025</span>
+                <ul class="job-details">
+                    <li>Led Agile development initiatives achieving a 98% on-time delivery rate for production releases.</li>
+                    <li>Optimized React Hooks for state management, reducing boilerplate code by 30%.</li>
+                    <li>Resolved critical rendering issues in the EliteCare project, improving load times by 15%.</li>
+                    <li>Ensured code quality through static analysis and unit testing, reducing bugs by 15%.</li>
+                </ul>
             </div>
-            <div class="project_content">
-              <h3 class="project_title">Uncomplicate</h3>
-              <span class="project_description"
-                >Uncomplicate is a task management application that allows users
-                to prioritize and track their daily tasks.</span
-              >
-              <span class="project_year">May 2022</span>
-            </div>
-            <div class="project_content">
-              <h3 class="project_title">Classroom.Live</h3>
-              <span class="project_description"
-                >Classroom.Live is an online learning platform that connects
-                students and teachers through live classes.</span
-              >
-              <span class="project_year">Dec 2021</span>
-            </div>
-          </div>
-        </section>
-      </div>
-    </main>
-    <!-- HTML2PDF -->
-    <script src="assets/js/html2pdf.bundle.min.js"></script>
+        </div>
+    </section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-      <h2 class="footer_title">Contact</h2>
-      <div class="footer_content bd-grid">
-        <div class="footer_data">
-          <h3 class="footer_subtitle">Email</h3>
-          <p class="footer_information">riteshp112@gmail.com</p>
+    <section id="projects">
+        <h2 class="section-title"><span>Key Projects</span></h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-title">Plural Dashboard & SDK</div>
+                <div class="tech-stack">React.js, Next.js, Node.js, Microservices</div>
+                <p>Built a unified payment gateway dashboard used by 1M+ merchants. Optimized frontend rendering reducing load time by 25% and increasing engagement by 30%.</p>
+            </div>
+            <div class="project-card">
+                <div class="project-title">EliteCare</div>
+                <div class="tech-stack">React.js, Redux, Node.js, Express, MongoDB</div>
+                <p>Developed an all-in-one hospital ERP software. Designed reusable components and integrated third-party APIs, reducing transition process errors by 30%.</p>
+            </div>
+            <div class="project-card">
+                <div class="project-title">LOCOMO</div>
+                <div class="tech-stack">React.js, Node.js, Express, MongoDB</div>
+                <p>Achieved 30% improvement in performance and 20% reduction in JavaScript issue resolution time through modular architecture and state management optimization.</p>
+            </div>
         </div>
-        <div class="footer_data">
-          <h3 class="footer_subtitle">Phone</h3>
-          <p class="footer_information">+91 9140287372</p>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2 class="section-title"><span>Get In Touch</span></h2>
+        <p>I'm currently open to new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
+        
+        <div class="contact-links">
+            <a href="mailto:riteshp112@gmail.com" class="contact-item">riteshp112@gmail.com</a>
+            <a href="https://linkedin.com/in/riteshp112" target="_blank" class="contact-item">LinkedIn</a>
+            <a href="tel:+919140287372" class="contact-item">+91 9140287372</a>
         </div>
-        <div class="footer_data">
-          <h3 class="footer_subtitle">LinkedIn</h3>
-          <p class="footer_information">
-            <a href="https://linkedin.com/in/riteshp112" target="_blank"
-              >linkedin.com/in/riteshp112</a
-            >
-          </p>
-        </div>
-      </div>
+    </section>
+
+    <footer>
+        <p>Designed & Built by Ritesh Patel &copy; <span id="year"></span></p>
     </footer>
 
-    <script src="assets/js/main.js"></script>
-  </body>
+    <script>
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Typing Effect
+        const textElement = document.getElementById('typing-text');
+        const texts = ["scalable web apps.", "FinTech solutions.", "secure payment flows."];
+        let count = 0;
+        let index = 0;
+        let currentText = '';
+        let letter = '';
+
+        (function type() {
+            if (count === texts.length) {
+                count = 0;
+            }
+            currentText = texts[count];
+            letter = currentText.slice(0, ++index);
+
+            textElement.textContent = letter;
+            if (letter.length === currentText.length) {
+                count++;
+                index = 0;
+                setTimeout(type, 2000); // Pause at end of word
+            } else {
+                setTimeout(type, 100); // Typing speed
+            }
+        }());
+    </script>
+</body>
 </html>
